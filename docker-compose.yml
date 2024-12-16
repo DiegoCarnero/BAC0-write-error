@@ -1,0 +1,30 @@
+version: '3'
+services:
+  bacnet_device_1:
+    build: .
+    container_name: bacnet_device_1
+    volumes:
+      - ./bacnet_device_1.py:/app/app.py
+    networks:
+      - my_network
+
+  bacnet_device_listener:
+    build: .
+    container_name: bacnet_device_listener
+    volumes:
+      - ./bacnet_device_listener.py:/app/app.py
+    networks:
+      - my_network
+
+  bacnet_device_writer:
+    build: .
+    container_name: bacnet_device_writer
+    volumes:
+      - ./bacnet_device_writer.py:/app/app.py
+    networks:
+      - my_network
+
+
+networks:
+  my_network:
+    driver: bridge
